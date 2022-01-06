@@ -30,5 +30,6 @@ Route::get('posts', function ()
 
 
 Route::get('articles', [PostsController::class,'index'])->name('welcome');
-Route::get('posts/{id}', [PostsController::class,'show'])->whereNumber('id');
+Route::get('posts/create', [PostsController::class,'create'])->name('posts.create');
+Route::get('posts/{id}', [PostsController::class,'show'])->name('posts.show');
 Route::get('contact', [PostsController::class,'contact'])->name('contact');

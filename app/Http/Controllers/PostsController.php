@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
 { 
     public function index()
 
-    {
-        $posts = ['Mon super  premier titre',
-        'Mon super  second  titre'];
+    { 
+
+        $posts = Post::all();
+       
         //return view('articles', compact('title'));
         //return view('articles')->with('title', $title);
 
@@ -20,11 +22,14 @@ class PostsController extends Controller
 
     public  function show($id)
     {
-        $posts = [
-            1 => 'Mon premier n 1',
-            2=> 'Mon  second n 2'
-        ];
-        $post = $posts[$id] ?? 'pas de titre';
+        //$post = Post::where('title', '=','')->firstOrFail();
+        $post = Post::findOrFail($id);
+        
+        //$posts = [
+            //1 => 'Mon premier n 1',
+            //2=> 'Mon  second n 2'
+        //];
+       // $post = $posts[$id] ?? 'pas de titre';
 
         return view('article',[
             
@@ -37,4 +42,8 @@ class PostsController extends Controller
         return view('contact');
     }
     //
+    public function create()
+    {
+        return view('form');
+    }
 }

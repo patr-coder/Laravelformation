@@ -13,6 +13,6 @@
     <div class="contenair mx-auto">
       @yield('content')
     </div>  
-    <script src="{{ asset('js/app.js') }}"></script>
+    {{-- <scriptsrc="asset('js/app.js') "></script>--}}
 </body>
 </html>
