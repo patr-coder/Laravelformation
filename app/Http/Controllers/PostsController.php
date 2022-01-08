@@ -45,7 +45,7 @@ class PostsController extends Controller
         
         $post = Post::find($id);
 
-        return view('articles',[
+        return view('article',[
             'post'=>$post
         ]);
         ///$post = Post::where('title', '=','')->firstOrFail();
