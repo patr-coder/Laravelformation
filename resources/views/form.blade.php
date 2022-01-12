@@ -1,7 +1,8 @@
 @extends('layout.app')
 
 @section('content')
-<h1>Creer un Post</h1>
+<div class="container ">
+  <h1>Creer un Post</h1>
 <form method="POST" action="{{ route('posts.store') }}">
         @csrf
       <div class="mb-3">
@@ -20,6 +21,8 @@
       </div>    ---}}      
       
       
+
+</div>
 
         
             

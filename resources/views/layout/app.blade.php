@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mon super titre</title>
     {{-- <linkrel="stylesheet"href="asset('css/app.css') --}}
-    <link href="/css/app.css" rel="stylesheet">
+    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     @include('Partiels.navbar')   

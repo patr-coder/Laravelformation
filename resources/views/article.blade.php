@@ -5,11 +5,11 @@
     {{-- <span>$post->image?$post->image->path : "pas d'image"}}</span>---}}
 
     <hr>
-    @forelse($post->$comments as $comment )
+    {{-- @forelse($post->$comments as $comment )
         <div>{{ $comment->content }} | cree le {{ $comment->created_at->format('Y') }}</div>
     @empty
         <span>Aucun Commentaire pour ce commentaire</span>    
-    @endforelse
+    @endforelse --}}
 
     <hr>
     

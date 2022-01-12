@@ -35,5 +35,6 @@ Route::post('posts/create', [PostsController::class,'store'])->name('posts.store
 //Route::get('article/creator', [PostsController::class,'creator'])->name('creator');
 Route::get('posts/{id}', [PostsController::class,'show'])->name('posts.show');
 Route::get('contact', [PostsController::class,'contact'])->name('contact');
+route::get('/register',[PostsController::class,'register']);
 //Route::get('article', [PostsController::class,'article'])->name('content.create');
 
