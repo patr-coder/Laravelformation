@@ -11,7 +11,7 @@ class Video extends Model
     public function comments()
     {
 
-        return $this->morphToMany(Comment::class, 'commentaire');
+        return $this->morphMany(Comment::class, 'commentable');
         # code...
     }
 

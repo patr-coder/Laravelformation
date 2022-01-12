@@ -13,10 +13,12 @@ class PostsController extends Controller
 
     { 
         $posts = Post::all();
+        $video = Video::find(1);
        // $post = post::find(9);
         //$post->delete();
        return view('articles',[
-           'posts'=>$posts
+           'posts'=>$posts,
+           'video' => $video
        ]);
     }
     public function create()
@@ -78,15 +80,15 @@ class PostsController extends Controller
         $video = Video::find(1);
         # code...
        
-        $comment1 = new comment(['content'=> "mon premier"]);
-        $comment2 = new comment(['content'=> "mon second"]);
+        $comment1 = new Comment(['content'=> "mon premier"]);
+        $comment2 = new Comment(['content'=> "mon second"]);
+
         $post->comments()->saveMany([$comment1,$comment2]);
 
-        $comment3 = new comment(['content'=> "mon troisieme"]);
-
+        $comment3 = new Comment(['content'=> "mon troisieme"]);
         $video->comments()->save($comment3);
 
-        dd('creer');
+        
     }
      
 

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use App\Models\Artists;
 use App\Models\Tag;
 use App\Models\Image;
 use App\Models\comment;
@@ -16,25 +16,34 @@ class Post extends Model
         'title','content'
     ];
 
-    //public function comments()
-    //{
-    //    return $this->hasMany(Comment::class);
-    //}
     public function comments()
     {
-
-        return $this->morphToMany(Comment::class, 'commentaire');
-        # code...
+       return $this->hasMany(Comment::class);
     }
+    //public function comments()
+    //{
 
-    public function image()
+       // return $this->morphMany(Comment::class, 'commentable');
+        # code...
+    //}
+
+    public function imageArtists()
     {
-        return $this->hasOne(image::class);
+        return $this->hasOneThrough(Artists::class,image::class);
     }
 
     public function tags()
     {
         return $this->belongsTo(Tag::class);
+    }
+    public function latestComment()
+    {
+        return $this->hasOne(Comment::class,)->latestOfMany();
+    }
+
+    public function oldestComment()
+    {
+        return $this->hasOne(Comment::class,)->oldestOfMany();
     }
     
     
