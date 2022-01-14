@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Video;
 use App\Models\Comment;
+use App\Rules\Uppercase;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostsController extends Controller
 { 
@@ -27,21 +29,31 @@ class PostsController extends Controller
         return view('form');
     }
 
+    
     public function store(Request $request)
-    {
-       $post = new Post();
+   {
+    Storage::disk('public')->put('avatars', $request->avatar);
 
-       //$request->validate([
-           //'title' =>'required|unique:posts',
-           //'content' => 'required'
-       //]);
+    die();
+
+    { if($request->isMethod('post'))
+     { 
+        $post = new Post();
+
+        $request->validate([
+            'title'=> 'required|min:5|title|unique:post', new Uppercase,
+            'content'=> 'required',
+            'file.*' => 'required|mines:csv,text,xlx,xls,pdf|max:2048'
+        ]);
        $post->title = $request->title;
        $post->content = $request->content;
        $post->save();
-       dd('post creer!!!');
+       
 
-       //return view('articles',['post'=>$post]);
+       return view('articles',['post'=>$post]);
+     }
     }
+   }
 
     public  function show($id)
     {
